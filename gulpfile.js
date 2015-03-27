@@ -17,6 +17,9 @@ var nodemon = require('gulp-nodemon');
 var runSequence = require('run-sequence');
 var exit = require('gulp-exit');
 
+var NpmImportPlugin = require("less-plugin-npm-import");
+var options = { plugins: [new NpmImportPlugin({prefix: '~'})] };
+
 gulp.task('lint-client', function () {
   return gulp.src('client/**/*.js')
     .pipe(jshint())
@@ -72,7 +75,7 @@ gulp.task('watch', function() {
 
 gulp.task('styles', function() {
   return gulp.src('client/less/index.less')
-    .pipe(less())
+    .pipe(less(options))
     .pipe(prefix({ cascade: true }))
     .pipe(rename('app.css'))
     .pipe(gulp.dest('build'))

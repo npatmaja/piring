@@ -1,4 +1,5 @@
 var bodyParser = require('body-parser');
+var path = require('path');
 
 module.exports = function configureExpress (app) {
   var root = app.config.root;
@@ -7,6 +8,9 @@ module.exports = function configureExpress (app) {
 
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+
+  app.use(app.express.static(path.join(root, 'public')));
+  delete app.express;
 
   var apiBaseUrl = '/api/' + app.config.apiVersion + '/';
   var apiRouter = root + '/routes/api';
