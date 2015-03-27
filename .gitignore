@@ -87,5 +87,6 @@ $RECYCLE.BIN/
 
 # project specific
 build/
-public/css/
-public/js/
+public/stylesheets/
+public/javascripts/
+public/images/
