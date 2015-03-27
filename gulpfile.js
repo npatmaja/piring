@@ -69,6 +69,7 @@ gulp.task('test-server', ['lint-test'], function () {
 });
 
 gulp.task('watch', function() {
+  gulp.watch('client/**/*.less', ['styles']);
   gulp.watch('client/**/*.js', ['browserify-client']);
   gulp.watch('test/client/**/*.js', ['browserify-test']);
 });
