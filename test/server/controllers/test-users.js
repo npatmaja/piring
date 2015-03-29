@@ -4,11 +4,11 @@ var app = require('index');
 
 describe('users', function () {
   describe('#index', function () {
-    it('returns 200', function () {
+    it('returns 200', function (done) {
       request(app)
         .get('/api/' + app.config.apiVersion + '/users')
         .expect('Content-Type', /json/)
-        .expect(200);
+        .expect(200, done);
     });
   });
 });

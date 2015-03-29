@@ -99,9 +99,18 @@ gulp.task('uglify', ['browserify-client'], function() {
 
 gulp.task('run', function () {
   nodemon({
+    verbose: true,
     script: 'server.js',
     ext: 'js',
-    watch: ['server', 'index.js', 'server.js', 'config', 'gulpfile.js', 'package.json'],
+    watch: [
+      'server', 
+      'index.js', 
+      'server.js', 
+      'config', 
+      'gulpfile.js', 
+      'package.json', 
+      'routes', 
+      'views'],
     env: {
       'NODE_ENV': 'development'
     }

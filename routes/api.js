@@ -1,37 +1,31 @@
-var validator = require('validator');
-var root = '';
+require('rootpath')();
+var express = require('express');
+var router = express.Router();
 
-module.exports = function routeRequest (app) {
-  root = app.config.root;
-
-  app.get(':controller', function (req, res, next) {
+router
+  .get('/:controller', function (req, res, next) {
+    console.log('list users');
     routeToController(req.params.controller, 'list', req, res, next);
-  });
-
-  app.get(':controller/:id', function (req, res, next) {
+  })
+  .get('/:controller/:id', function (req, res, next) {
     routeToController(req.params.controller, 'get', req, res, next);
-  });
-
-  app.post(':controller', function (req, res, next) {
+  })
+  .post('/:controller', function (req, res, next) {
     routeToController(req.params.controller, 'create', req, res, next);
-  });
-
-  app.put(':controller', function (req, res, next) {
+  })
+  .put('/:controller', function (req, res, next) {
     routeToController(req.params.controller, 'update', req, res, next);
-  });
-
-  app.delete(':controller', function (req, res, next) {
+  })
+  .delete('/:controller', function (req, res, next) {
     routeToController(req.params.controller, 'delete', req, res, next);
   });
-}
 
 function routeToController (controllerName, methodName, req, res, next) {
   var controllerName = controllerName || 'list';
   var controller = null;
-  var controllerDir = root + 'server/controllers/'
   
   try {
-    controller = require(controllerDir + controllerName);
+    controller = require('server/controllers/' + controllerName);
   } catch (e) {
     console.warn("controller not found: " + controllerName, e);
     next();
@@ -45,3 +39,5 @@ function routeToController (controllerName, methodName, req, res, next) {
     next();
   }
 }
+
+module.exports = router;

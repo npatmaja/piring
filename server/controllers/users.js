@@ -1,5 +1,5 @@
 module.exports = {
   list: function (req, res, next) {
-    return req.send( {message: 'success'} );
+    return res.send( {message: 'success'} );
   }
 }

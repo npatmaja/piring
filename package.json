@@ -1,7 +1,22 @@
 {
   "name": "piring",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "A node.js + browserify ++ project template",
+  "keywords": [
+    "node.js",
+    "browserify",
+    "project template",
+    "bootstrap",
+    "kickstarter"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npatmaja/piring.git"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development gulp",
+    "test": "gulp test"
+  },
   "main": "server.js",
   "author": "Nauval Atmaja <nauval.atmaja@gmail.com> (http://nauvalatmaja.com/)",
   "license": "MIT",
@@ -30,6 +45,7 @@
     "bootstrap": "^3.3.2",
     "browserify": "^9.0.3",
     "chalk": "^1.0.0",
+    "jade": "^1.9.2",
     "less-plugin-npm-import": "^2.0.0",
     "rootpath": "^0.1.2",
     "validator": "^3.34.0"

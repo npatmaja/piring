@@ -1,0 +1,4 @@
+if NODE_ENV == 'production' || NODE_ENV == 'staging'
+  script(type="application/javascript", src="javascripts/app.min.js")
+else
+  script(type="application/javascript", src="javascripts/app.js")
